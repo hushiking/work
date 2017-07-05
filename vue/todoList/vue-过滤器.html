@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="lib/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    {{time | date(1, 2)}}
+  </div>
+  <script>
+  // vue2.0移除了所有内置过滤器,作者推荐使用lodash的工具函数库自定义过滤器(_debounce(fn, 2000)),过滤器中传参使用小括号
+    Vue.filter('date', function(val, a, b) {
+      alert(a+b)
+      var oDate = new Date(val)
+      var month = oDate.getMonth() + 1
+      month = month < 10? '0'+month: month
+      var day = oDate.getDate()
+      day = day < 10? '0'+day: day
+      var hour = oDate.getHours()
+      hour = hour < 10? '0'+hour: hour
+      var minute = oDate.getMinutes()
+      minute = minute < 10? '0'+minute: minute
+      var second = oDate.getSeconds()
+      second = second < 10? '0'+second: second
+
+      return oDate.getFullYear() + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second
+    })
+    new Vue({
+      el: '#box',
+      data: {
+        time: Date.now()
+      },
+    })
+  </script>
+</body>
+</html>

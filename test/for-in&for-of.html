@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>for-in&for-of循环</title>
+</head>
+
+<body>
+  <script>
+  let aArray = ['a', 123, {
+    a: '1',
+    b: '2'
+  }]
+  aArray.name = 'demo'
+  for (let index in aArray) {
+    console.log(aArray[index]);
+    console.log(`${aArray[index]}`)
+  }
+  for (var value of aArray) {
+    console.log(value)
+  }
+  console.log("===========================")
+
+  var student = {
+    name: 'wujunchuan',
+    age: 22,
+    locate: {
+      country: 'china',
+      city: 'xiamen',
+      school: 'XMUT'
+    }
+  }
+  for (var key of Object.keys(student)) {
+    console.log(`${key}:`, student[key])
+  }
+  </script>
+</body>
+
+</html>

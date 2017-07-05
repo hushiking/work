@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue自定义指令</title>
+  <style>
+    my-red {
+      height: 200px;
+      width: 200px;
+      display: block;
+      background: #888;
+    }
+  </style>
+  <script src="lib/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <my-red></my-red>
+    <span v-red="value">颜色变化了吗</span>
+  </div>
+  <script>
+    Vue.directive('red', function(el, binding, vnode) {
+      el.style.color = binding.value
+      console.log(binding)
+    })
+    // vue2已经移除
+    /*Vue.elementDirective('my-red', {
+      bind: function() {
+        this.el.style.background = 'red'
+      }
+    })*/
+    new Vue({
+      el: '#box',
+      data: {
+        value: 'blue',
+        num: 20
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>作用域</title>
+</head>
+
+<body>
+  <script>
+  foo()
+  console.log(foo)
+  var foo = 3
+
+  function foo() {
+    console.log(1)
+  }
+  console.log(foo)
+  foo = function() {
+    console.log(2)
+  }
+  console.log(foo)
+
+  // console.log(a)
+  // a = 10 // 只有var声明的变量才能提升
+  </script>
+  <script>
+  console.log('==========')
+
+  function numberGenerator() {
+    var num = 1
+
+    function checkNumber() {
+      console.log(num)
+    }
+    num++
+    return checkNumber
+  }
+
+  var number = numberGenerator()
+  number()
+  number()
+  </script>
+  <script>
+  console.log('==========')
+
+  function numberGenerator() {
+    var num = 1
+
+    function checkNumber() {
+      console.log(num++)
+    }
+    return checkNumber
+  }
+  var number = numberGenerator()
+  number()
+  number()
+  </script>
+  <script>
+  console.log('==========')
+
+  function numberGenerator() {
+    var num = 1
+
+    function checkNumber() {
+      num++
+      console.log(num)
+    }
+    return checkNumber
+  }
+  var number = numberGenerator()
+  number()
+  number()
+  </script>
+  <script>
+  console.log('==========')
+
+  function test() {
+    console.log(foo);
+    console.log(bar);
+
+    var foo = 'Hello';
+    console.log(foo);
+    var bar = function() {
+      return 'world';
+    }
+
+    function foo() {
+      return 'hello';
+    }
+  }
+
+  test();
+  </script>
+  <script>
+  console.log('==========')
+
+  function box(num) { //按值传递
+    num += 10;
+    return num;
+  }
+
+  function count(obj) {
+    obj = {
+      a: 2,
+      b: 3
+    }
+    return obj
+  }
+
+  var num = 10;
+  var obj = {
+    x: 5,
+    y: 8
+  }
+  var result = box(num);
+  var next = count(obj);
+  console.log(result); //如果是按引用传递，那么函数里的num会成为类似全局变量，把外面的number替换掉
+  console.log(num); //也就是说，最后应该输出20（这里输出10）
+
+  console.log(next)
+  console.log(obj)
+  </script>
+  <script>
+  console.log('==========')
+  var data = [];
+  // 变量i是存放在“Global VO”中的变量，循环结束后i的值就被设置为3
+  for (var i = 0; i < 3; i++) {
+    data[i] = function() {
+      console.log(i);
+    }
+  }
+  data[0](); // 3
+  data[1](); // 3
+  data[2](); // 3
+  </script>
+  <script>
+  console.log('==========')
+  var foo = 10
+
+  function bar() {}; // function declaration, FD
+  (function bat() {}); // function expression, FE
+  ! function baz() {
+    console.log('baz')
+  }();
+
+  console.log(this.foo == foo, window.bar == bar)
+    // console.log(baz) // 报错，Uncaught ReferenceError: baz is not defined
+  </script>
+  <script>
+  console.log('==========')
+  var fn;
+
+  function foo() {
+    var a = 2;
+
+    function baz() {
+      console.log(a);
+    }
+    fn = baz;
+  }
+
+  function bar() {
+    fn();
+  }
+
+  foo();
+  bar(); // 2
+  </script>
+  <script>
+  console.log('==========')
+  var fn;
+  var m = 20;
+
+  function foo() {
+    var a = 2;
+
+    function baz(a) {
+      console.log(a);
+    }
+    fn = baz;
+  }
+
+  function bar() {
+    fn(m);
+  }
+
+  foo();
+  bar(); // 20
+  </script>
+  <script>
+  console.log('==========')
+
+  function foo() {
+    var a = 2;
+
+    return function bar() {
+      var b = 9;
+
+      return function fn() {
+        console.log(a);
+      }
+    }
+  }
+
+  var bar = foo();
+  var fn = bar();
+  fn();
+  </script>
+  <script>
+  console.log('==========')
+
+  function foo() {
+    var a = 2;
+
+    return function bar() {
+      var b = 9;
+
+      return function fn() {
+        console.log(a, b);
+      }
+    }
+  }
+
+  var bar = foo();
+  var fn = bar();
+  fn();
+  </script>
+  <script>
+  console.log('==========');
+  (function() {
+
+    var a = 10;
+    var b = 20;
+
+    var test = {
+      m: 20,
+      add: function(x) {
+        return a + x;
+      },
+      sum: function() {
+        return a + b + this.m;
+      },
+      mark: function(k, j) {
+        return k + j;
+      }
+    }
+
+    window.test = test;
+
+  })();
+
+  test.add(100);
+  test.sum();
+  test.mark();
+
+  var _mark = test.mark();
+  // _mark();
+  </script>
+  <script>
+  console.log('==========')
+  var a = 10;
+  var obj = {
+    a: 20
+  }
+
+  function fn() {
+    console.log(this.a);
+  }
+
+  fn.call(obj); // 20
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue-动态组件(tab切换)</title>
+  <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+  <template id="aaa">
+    <h3 @click="change">{{msg}}</h3>
+  </template>
+  <div id="box">
+    <button @click="a='aaa'">aaa组件</button>
+    <button @click="a='bbb'">bbb组件</button>
+    <component :is="a"></component>
+  </div>
+  <script>
+    new Vue({
+      el: '#box',
+      data: {
+        a: 'aaa'
+      },
+      components: {
+        'aaa': {
+          template: '#aaa',
+          data() {
+            return {
+              msg: '父组件aaa'
+            }
+          },
+          methods: {
+            change() {
+              this.msg = "改变了父组件aaa"
+            }
+          }
+        },
+        'bbb': {
+          template: '#aaa',
+          data() {
+            return {
+              msg: '父组件bbb'
+            }
+          },
+          methods: {
+            change() {
+              this.msg = "改变了父组件bbb"
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

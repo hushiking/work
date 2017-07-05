@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>圣杯布局(inline-block)</title>
+  <style>
+    .wrap {
+      margin-left: 100px;
+      margin-right: 150px;
+      background: #fbd570;
+      font-size: 0;
+      letter-spacing: -4px; /* 用于兼容Safari，根据不同字体字号或许需要做一定的调整 */
+    }
+    .wrap * {
+      font-size: 1rem;
+      letter-spacing: normal;
+    }
+    .left {
+      display: inline-block;
+      margin-left: -100px;
+      width: 100px;
+      height: 180px;
+      background: #00f;
+      vertical-align: top;
+    }
+    .right {
+      display: inline-block;
+      margin-right: -150px;
+      width: 150px;
+      height: 200px;
+      background: #0f0;
+      vertical-align: top;
+    }
+    .center {
+      display: inline-block;
+      width: 100%;
+      height: 150px;
+      min-width: 150px;
+      background: #b373da;
+      vertical-align: top;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="left">left，宽度固定，高度可固定也可以由内容撑开</div>
+    <div class="center">center，可以自适应浏览器宽度，高度可固定也可以由内容撑开</div>
+    <div class="right">right，宽度固定，高度可固定也可以由内容撑开</div>
+  </div>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, numquam, voluptate? Assumenda possimus cupiditate ut, itaque at, exercitationem nobis blanditiis, ad nisi ea labore! Sint sed amet ullam id, vel.
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue2.0组件简洁化定义</title>
+  <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <home></home>
+    <h3>Hello, Vue!</h3>
+  </div>
+  <template id="home">
+    <strong>我是home加粗</strong>
+  </template>
+  <script>
+    // 该对象表示直接定义一个组件
+    var Home = {
+      template: '#home'
+    }
+    // 将组件命名并注册
+    Vue.component('home', Home)
+    new Vue({
+      data: {
+        msg: 'vue测试'
+      }
+    }).$mount('#box')
+  </script>
+</body>
+</html>

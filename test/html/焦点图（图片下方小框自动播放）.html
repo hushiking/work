@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+  * {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+  }
+  
+  .photo {
+    width: 400px;
+    height: 200px;
+    margin: 50px;
+    position: relative;
+  }
+  
+  .main {
+    width: 400px;
+    height: 200px;
+    position: relative;
+  }
+  
+  .main1 li {
+    width: 400px;
+    height: 200px;
+    list-style-type: none;
+  }
+  
+  .pto {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .pto1 {
+    width: 400px;
+    height: 200px;
+    background: cyan;
+  }
+  
+  .pto2 {
+    width: 400px;
+    height: 200px;
+    background: purple;
+    display: none;
+  }
+  
+  .pto3 {
+    width: 400px;
+    height: 200px;
+    background: blue;
+    display: none;
+  }
+  
+  .btn {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background: rgba(0, 0, 0, .3);
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+  }
+  
+  .btn1 {
+    left: 0;
+    top: 85px;
+  }
+  
+  .btn2 {
+    right: 0;
+    top: 85px;
+  }
+  
+  .circleBtn {
+    position: absolute;
+    top: 170px;
+    right: 182px;
+    width: 42px;
+    height: 10px;
+    zoom: 1;
+  }
+  
+  .circleBtn span {
+    width: 10px;
+    height: 10px;
+    margin: 0 2px;
+    float: left;
+    cursor: pointer;
+    background: #fff;
+    text-align: center;
+    line-height: 10px;
+  }
+  
+  .circleBtn .light {
+    background: #f66;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="photo" id="main">
+    <div class="main">
+      <ul class="main1" id="amain">
+        <li class="pto pto1">one</li>
+        <li class="pto pto2">two</li>
+        <li class="pto pto3">three</li>
+      </ul>
+    </div>
+    <span class="btn btn1" id="btn1">&lt;</span>
+    <span class="btn btn2" id="btn2">&gt;</span>
+    <div class="circleBtn" id="circleBtn">
+      <span class="light">1</span>
+      <span>2</span>
+      <span>3</span>
+    </div>
+  </div>
+</body>
+<script>
+function $(id) {
+  return typeof id === "string" ? document.getElementById(id) : id;
+}
+window.onload = function() {
+  //pto变量为所展示的图片集和
+  var pto = $("amain").getElementsByTagName("li");
+  //定义一个span标签的集合cirBtn
+  var cirBtn = $("circleBtn").getElementsByTagName("span");
+  //定义一个全局变量
+  var index = 0;
+  //定义一个setInterval方法cirTimer
+  var cirTimer = null;
+
+  for (var i = 0; i < cirBtn.length; i++) {
+    //给图片加上id=0,1,2
+    cirBtn[i].id = i;
+    //鼠标移动邦定触发事件:显示当前id对应的图片
+    cirBtn[i].onmouseenter = function() {
+        //先停止自动循环
+        clearInterval(cirTimer);
+        //隐藏图片和小框
+        clearBtn();
+        //显示当前id对应的图片和小框
+        showBtn(this.id);
+      }
+      //鼠标离开触发事件:自动循环
+    cirBtn[i].onmouseout = function() {
+      cirTimer = setInterval(autoPlay, 2000);
+    }
+  }
+
+  //设置当前只有一个定时器cirTimer
+  if (cirTimer) {
+    clearInterval(cirTimer);
+    cirTimer = null;
+  }
+
+  cirTimer = setInterval(autoPlay, 2000);
+
+  //自动循环函数
+  function autoPlay() {
+    //当index小于2则++,否则就是超过长度,则归0即index=0
+    if (index < cirBtn.length - 1) {
+      index++;
+    } else {
+      index = 0;
+    }
+    //console.log(index);
+    //清除函数
+    clearBtn();
+    //显示函数
+    showBtn(index);
+  }
+
+  //定义一个隐藏图片和小框的函数
+  function clearBtn() {
+    for (var i = 0; i < cirBtn.length; i++) {
+
+      cirBtn[i].className = "";
+      pto[i].style.display = "none";
+    }
+  }
+  //定义一个显示当前id对应的图片和小框的函数
+  function showBtn(x) {
+    for (var i = 0; i < cirBtn.length; i++) {
+      console.log(x);
+      if (i == x) {
+        cirBtn[i].className = "light";
+        pto[i].style.display = "block";
+      }
+      //这里重要了.这里把x赋值给index是为了让循环从停止的id重新开始循环
+      index = x;
+    }
+  }
+
+}
+</script>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue2.0生命周期</title>
+  <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="box">
+    <input type="button" value="更新数据" @click="update">
+    <input type="button" value="销毁组件" @click="destory">
+    {{msg}}
+  </div>
+  <script>
+  new Vue({
+    el: '#box',
+    data: {
+      msg: 'welcome vue2.0'
+    },
+    methods: {
+      update() {
+        this.msg = '数据发生了变化'
+      },
+      destory() {
+        console.log(this)
+        this.$destroy()
+      }
+    },
+    beforeCreate() {
+      // 创建一个空实例,没有绑定属性和方法
+      console.log('组件实例刚刚被创建')
+    },
+    created() {
+      // 给实例绑定了属性和方法,但是DOM树还未构建
+      console.log('实例已经创建完成')
+    },
+    beforeMount() {
+      console.log('模板编译之前,还未挂载')
+    },
+    mounted() {
+      // 插值语法编译完成
+      console.log('模板编译完成,花括号已经转化为数据')
+    },
+    beforeUpdate() {
+      console.log('数据或组件更新之前')
+    },
+    updated() {
+      console.log('数据或组件更新完毕')
+    },
+    beforeDestroy() {
+      console.log('组件销毁之前')
+    },
+    destroyed() {
+      console.log('组件销毁完毕')
+    }
+  })
+  </script>
+</body>
+
+</html>

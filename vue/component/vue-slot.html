@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue-slot分发</title>
+  <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+  <template id="aaa">
+    <div>
+      <span>我是父级</span>
+      <slot>默认slot</slot>
+      <h3 @click="change">{{msg}}</h3>
+      <slot name="ol">我是默认slot,只有没有分发内容时显示</slot>
+      <bbb></bbb>
+    </div>
+  </template>
+  <div id="box">
+    <aaa>
+      <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+      </ul>
+      <ol slot="ol">
+        <li>column1</li>
+        <li>column2</li>
+        <li>column3</li>
+        <li>column4</li>
+        <li>column5</li>
+      </ol>
+    </aaa>
+    <aaa></aaa>
+  </div>
+  <script>
+    new Vue({
+      el: '#box',
+      data: {
+        a: 'aaa'
+      },
+      components: {
+        'aaa': {
+          template: '#aaa',
+          data() {
+            return {
+              msg: 'aaa'
+            }
+          },
+          methods: {
+            change() {
+              this.msg = "改变了aaa组件"
+            }
+          },
+          components: {
+            'bbb': {
+              template: '<h2>我是子组件bbb</h2>',
+              data() {
+                return {
+                  msg: 'bbb'
+                }
+              },
+              methods: {
+                change() {
+                  this.msg = "改变了bbb组件"
+                }
+              }
+            }
+          }
+        },
+      }
+    })
+  </script>
+</body>
+</html>

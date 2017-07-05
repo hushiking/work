@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue-父子组件通信2</title>
+  <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+  <template id="aaa">
+    <div>
+      <h3 @click="change">{{msg}} and {{obj}}</h3>
+      <aba :zzz="obj"></aba>
+    </div>
+  </template>
+  <template id="bbb">
+    <div>
+      <h3 @click="change">{{msg}}</h3>
+      <bab :xxx="msg" :yyy="num"></bab>
+    </div>
+  </template>
+  <div id="box">
+    <button @click="a='aaa'">aaa组件</button>
+    <button @click="a='bbb'">bbb组件</button>
+    <component :is="a"></component>
+    <bbb></bbb>
+  </div>
+  <script>
+    new Vue({
+      el: '#box',
+      data: {
+        a: 'aaa'
+      },
+      components: {
+        'aaa': {
+          template: '#aaa',
+          data() {
+            return {
+              msg: '父组件aaa',
+              obj: {
+                a: '小明',
+                b: 18
+              }
+            }
+          },
+          methods: {
+            change() {
+              this.msg = "改变了父组件aaa"
+            }
+          },
+          components: {
+            'aba': {
+              props: ['zzz'],
+              template: '<h3 @click="change">aaa的子组件:{{zzz.a}}->{{zzz.b}}</h3>',
+              methods: {
+                change() {
+                  this.zzz.a = '小红'
+                }
+              }
+            }
+          }
+        },
+        'bbb': {
+          template: '#bbb',
+          data() {
+            return {
+              num: 555,
+              msg: '父组件bbb',
+            }
+          },
+          methods: {
+            change() {
+              this.msg = "改变了父组件bbb"
+            }
+          },
+          components: {
+            'bab': {
+              // props: ['xxx', 'yyy'],
+              props: {
+                xxx: String,
+                yyy: Number
+              },
+              template: '<h3 @click="change">bbb的子组件:{{xxx}}->{{yyy}}</h3>',
+              methods: {
+                // 在子组件中改变父组件传来的数据(不推荐,vue会警告),不允许直接修改父组件传来的数据
+                change() {
+                  this.xxx = 'bbb的子组件bab'
+                }
+              }
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

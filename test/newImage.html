@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>新建图像</title>
+</head>
+<body>
+</body>
+  <script>
+    function loadImageAsync(url) {
+      return new Promise(function(resolve, reject) {
+        var image = new Image();
+
+        image.onload = function() {
+          resolve(image);
+        };
+
+        image.onerror = function() {
+          reject(new Error('Could not load image at ' + url));
+        };
+
+        image.src = url;
+      });
+    }
+    loadImageAsync('https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/35a85edf8db1cb13c62b07a9df54564e93584bcd.jpg').then(img => document.body.appendChild(img), err => console.log(err))
+  </script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue-局部组件</title>
+  <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+  <template id="my">
+    <h3 @click="change">{{msg}}</h3>
+  </template>
+  <div id="box">
+    <my-component @click.native="handle">好的</my-component>
+  </div>
+  <script>
+    new Vue({
+      el: '#box',
+      data: {
+        msg: 1222
+      },
+      // 自定义组件添加方法需要使用.native
+      methods: {
+        handle() {
+          alert('xxx')
+        }
+      },
+      components: {
+        'my-component': {
+          template: '#my',
+          data() {
+            return {
+              msg: 1234
+            }
+          },
+          methods: {
+            change() {
+              this.msg = "改变了组件"
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

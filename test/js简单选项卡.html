@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta charset="gb2312">
+  <title>Document</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+  }
+  /*这里关键了，在float下一样可以获取width和height的值*/
+  
+  .clear {
+    zoom: 1;
+  }
+  
+  .clear:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  
+  .top ul {
+    list-style-type: none;
+  }
+  
+  .top ul li {
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    float: left;
+    background-color: powderblue;
+    color: pink;
+    border: 2px solid powderblue;
+  }
+  
+  .top ul li.light {
+    border: 2px solid red;
+    color: red;
+  }
+  
+  .main {
+    width: 612px;
+    height: 300px;
+    position: relative;
+    background: red;
+  }
+  
+  .min {
+    width: 612px;
+    height: 300px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .min ul li {
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="top">
+    <ul class="clear" id="btn_one">
+      <li class="light" data-color="red">one</li>
+      <li data-color="blue">two</li>
+      <li data-color="yellow">three</li>
+    </ul>
+  </div>
+  <div class="main" id="amain">
+    <div class="min main1">
+      <ul>
+        <li>这里有座山</li>
+        <li>这里有座山</li>
+        <li>这里有座山</li>
+        <li>这里有座山</li>
+        <li>这里有座山</li>
+      </ul>
+    </div>
+    <div class="min main2" style="display: none">
+      <ul>
+        <li>窗外有风景</li>
+        <li>窗外有风景</li>
+        <li>窗外有风景</li>
+        <li>窗外有风景</li>
+        <li>窗外有风景</li>
+      </ul>
+    </div>
+    <div class="min main3" style="display: none">
+      <ul>
+        <li>天上有太阳</li>
+        <li>天上有太阳</li>
+        <li>天上有太阳</li>
+        <li>天上有太阳</li>
+        <li>天上有太阳</li>
+      </ul>
+    </div>
+  </div>
+</body>
+<script>
+// 通过ID  封装函数,如果id字符串等于string，返回getElementById(id)
+// 否则返回id 本身；
+
+
+function $(id) {
+  return typeof id == "string" ? document.getElementById(id) : id;
+}
+window.onload = function() {
+  //定义函数titles(li的集合)divs(div的集合)；
+  var titles = $("btn_one").getElementsByTagName("li");
+  var divs = $("amain").getElementsByTagName("div");
+
+  //当titles和divs的长度不一样就不执行；
+  if (titles.length != divs.length) {
+    return;
+  }
+  for (var i = 0; i < titles.length; i++) {
+    //为btn_on下的每个li添加索引；
+    titles[i].id = i;　　　　 //滑动鼠标onmouseover时触发事件;
+    titles[i].onmouseover = function() {
+      //getAttribute可以取得自定义标签data-color的值；
+      var btnstyle = this.getAttribute("data-color");
+      //清楚所有li和div上的样式
+      clearBtn();
+      //鼠标滑过哪个li就高亮哪个li；
+      this.className = "light";
+      //data-color当下的值给当前次数的li的内容
+      this.style.color = btnstyle;
+      //把data-color当下的值给当前次数li的边框
+      this.style.border = '2px solid ' + btnstyle;
+      //设置当前li所对应的div为显示状态
+      divs[this.id].style.display = "block";
+
+    }
+  }
+
+  function clearBtn() {
+    for (var i = 0; i < titles.length; i++) {
+      //li的样式为空
+      titles[i].className = "";
+      //li的内容为白色
+      titles[i].style.color = "";
+      //li的边框为空
+      titles[i].style.border = "";
+      //div为隐藏状态
+      divs[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-animate.css动画</title>
+  <style>
+  .box {
+    width: 200px;
+    height: 200px;
+    background: #666;
+  }
+  </style>
+  <link rel="stylesheet" href="node_modules/animate.css/animate.css">
+  <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="all">
+    <button @click="toggle">切换</button>
+    <transition enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+      <div class="box" v-if="show">理想</div>
+    </transition>
+  </div>
+  <script>
+  new Vue({
+    el: '#all',
+    data: {
+      show: true
+    },
+    methods: {
+      toggle() {
+        this.show = !this.show
+      }
+    }
+  })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+export const SHOW_HEADER = 'SHOW_HEADER'
+export const HIDE_HEADER = 'HIDE_HEADER'
+export const SHWO_LOADING = 'SHWO_LOADING'
+export const HIDE_LOADING = 'HIDE_LOADING'
+export const SHOW_FOOTER = 'SHOW_FOOTER'
+export const HIDE_FOOTER = 'HIDE_FOOTER'

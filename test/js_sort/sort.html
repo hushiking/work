@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>js数组排序</title>
+</head>
+<body>
+  <script>
+    var arr = [
+      [1, {name: 'zip', age: 0}, 0.78],
+      [2, {name: 'bbc', age: 18}, 0.12],
+      [3, {name: 'jjx', age: 8}, 0.33]
+    ];
+
+    function compare(sort) {
+      return function(a, b) {
+        var val1 = a[sort];
+        var val2 = b[sort];
+        return val2 - val1;
+      }
+    }
+    console.log(arr.sort(compare(2)));
+  </script>
+</body>
+</html>

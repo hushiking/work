@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style type="text/css">
+    * {
+        list-style: none;
+    }
+    
+    .demo {
+        width: 400px;
+        padding: 10px;
+    }
+    
+    .demo p {
+        padding: 5px;
+    }
+    
+    .demo li {
+        padding: 5px;
+        float: left;
+        margin-right: 4px;
+    }
+    
+    .demo li a {
+        float: left;
+        display: block;
+        height: 20px;
+        line-height: 20px;
+        width: 20px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        text-align: center;
+        background: #f36;
+        color: white;
+        text-decoration: none;
+    }
+    
+    .demo li:nth-child(1) {
+        background: #01FEFE;
+    }
+    
+    .demo li:nth-child(2n) {
+        background: #4679BD;
+    }
+    
+    .demo li:nth-child(-n+3) {
+        background: #0094ff;
+    }
+    
+    .demo li:nth-child(3n+1) {
+        background: #666;
+    }
+    
+    .demo li:nth-of-type(2) {
+        background: #000;
+    }
+    
+    </p> <p>
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <p>伪元素选择器</p>
+        <p>伪类选择器</p>
+        <p>:nth-child(n)</p>
+        <p>:nth-of-type(n)</p>
+        <ul>
+            <li class="one" id="first"><a href="">1</a></li>
+            <li class="two"><a href="">2</a></li>
+            <li class="three"><a href="">3</a></li>
+            <li class="four"><a href="">4</a></li>
+            <li class="five"><a href="">5</a></li>
+            <li class="six"><a href="">6</a></li>
+            <li class="seven"><a href="">7</a></li>
+            <li class="eight"><a href="">8</a></li>
+            <li class="nine"><a href="">9</a></li>
+            <li class="ten" id="last"><a href="">10</a></li>
+        </ul>
+    </div>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-component></my-component>
+    </div>
+    <div id="app2">
+        <my-component></my-component>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+// 1.创建一个组件构造器
+var myComponent = Vue.extend({
+        template: '<div>This is my component</div>'
+    })
+    // 2.注册组件
+new Vue({
+    el: '#app',
+    components: {
+        // 3.将myComponent组件注册到Vue实例下
+        'my-component': myComponent
+    }
+})
+new Vue({
+    el: '#app2'
+})
+</script>
+
+</html>

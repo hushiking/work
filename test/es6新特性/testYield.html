@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>测试yield用法</title>
+</head>
+
+<body>
+  <script>
+  var foo = function* () {
+    var x = 1
+    var w = 10
+    var y = yield x + (yield w)
+    var z = yield x + y
+    return z
+  }()
+
+  var a = foo.next()
+  var b = foo.next(3)
+  var c = foo.next(2)
+  var d = foo.next()
+  </script>
+</body>
+
+</html>

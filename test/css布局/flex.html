@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>flex初探</title>
+  <style>
+    div {
+      margin: 10px;
+    }
+    .gray {
+      background: gray;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .green {
+      /* width: 120px; */
+      flex-grow: 1; /* 按照比例分配个元素宽度 */
+      flex-basis: 50px; /*表示该元素的基础宽度*/
+      height: 80px;
+      background: green;
+      align-self: center; /*自己单独的垂直对齐属性*/
+    }
+    .yellow {
+      /* width: 120px; */
+      flex-grow: 1;
+      height: 120px;
+      background: yellow;
+    }
+    .red {
+      /* width: 120px; */
+      flex-grow: 3;
+      height: 150px;
+      background: red;
+    }
+    .blue {
+      /* width: 120px; */
+      flex-grow: 1;
+      height: 180px;
+      background: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="gray">
+    <div class="green"></div>
+    <div class="yellow"></div>
+    <div class="red"></div>
+    <div class="blue"></div>
+  </div>
+</body>
+</html>

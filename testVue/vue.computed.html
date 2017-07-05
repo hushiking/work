@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <p>Original message: {{message}}</p>
+        <p>Computed reversed message: {{reversedMessage}}</p>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+    var vm = new Vue({
+        el: '#box',
+        data: {
+            message: 'hello'
+        },
+        computed: {
+            reversedMessage() {
+                return this.message.split('').reverse().join('')
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

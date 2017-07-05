@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>background-clip用法</title>
+  <style>
+  .one {
+    margin: auto;
+    width: 400px;
+    height: 300px;
+    line-height: 300px;
+    text-align: center;
+    font-size: 180px;
+    font-weight: bold;
+    color: transparent;
+    background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493353832&di=c063b6b9c89082e96ffee0766112ffec&imgtype=jpg&er=1&src=http%3A%2F%2Fpic2016.5442.com%3A82%2F2016%2F0111%2F07%2F3.jpg%21960.jpg") no-repeat center center;
+    background-size: cover;
+    -webkit-background-clip: text;
+    /* -webkit-text-fill-color: transparent; */
+  }
+  
+  .two {
+    margin: 50px auto;
+    font-family: 'Arial', sans-serif;
+    font-size: 38px;
+    font-weight: bold;
+    text-align: center;
+    color: transparent;
+    background: linear-gradient(0, #009688 0%, yellowgreen 100%);
+    -webkit-background-clip: text;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="one">Clip</div>
+  <div class="two">background-clip</div>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>颜色选择器</title>
+  <link rel="stylesheet" href="css/farbtastic.css">
+  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="js/farbtastic.js"></script>
+</head>
+<body>
+  <form action=""><input type="text" name="color" id="color" value="#123456"></form>
+  <div id="colorpicker"></div>
+  <script>
+    $(document).ready(function() {
+      $('#colorpicker').farbtastic('#color')
+    })
+  </script>
+</body>
+</html>

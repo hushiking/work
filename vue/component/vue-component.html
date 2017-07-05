@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <my-component>好的</my-component>
+  </div>
+  <script>
+    var first = Vue.extend({
+      data: function() {
+        return {msg: 1333}
+      },
+      methods: {
+        change() {
+          this.msg = "改变了组件"
+        }
+      },
+      template: '<h3 @click="change">{{msg}}</h3>'
+    })
+    Vue.component('my-component', first)
+    new Vue({
+      el: '#box'
+    })
+  </script>
+</body>
+</html>

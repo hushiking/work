@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-animate.css多个元素同时动画</title>
+  <style>
+  p {
+    width: 100px;
+    height: 100px;
+    background: cyan;
+    margin: 20px auto;
+  }
+  </style>
+  <link rel="stylesheet" href="node_modules/animate.css/animate.css">
+  <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="all">
+    <input type="text" v-model="show">
+    <transition-group enter-active-class="zoomInLeft" leave-active-class="zoomOutRight">
+      <p v-if="show" class="animated" v-for="(val, index) in lists" :key="index">{{val}}</p>
+    </transition-group>
+  </div>
+  <script>
+  new Vue({
+    el: '#all',
+    data: {
+      show: '',
+      list: ['apple', 'banana', 'pear', 'orange', 'tomato', 'watermelon', 'pineapple', 'peach', 'plum']
+    },
+    computed: {
+      lists: function() {
+        var arr = []
+        this.list.forEach(function(val) {
+          if (val.indexOf(this.show) != -1) {
+            arr.push(val)
+          }
+        }.bind(this))
+        return arr
+      }
+    }
+  })
+  </script>
+</body>
+
+</html>

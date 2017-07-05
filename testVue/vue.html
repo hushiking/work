@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app" v-bind:title="message">
+        <p v-if="seen">我在哪里</p>
+        {{message}}
+        <br>
+        <button v-on:click="reverse">Reverse Message</button>
+        <ol>
+            <li v-for="todo in todos">{{todo.text}}</li>
+            <item v-bind:test="items[0]"></item>
+        </ol>
+        <ul>
+            <item v-for="txt in items" v-bind:test="txt"></item>
+        </ul>
+        <input v-model="message">
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+    Vue.component('item', {
+        props: ['test'],
+        template: '<li>{{test.text}}</li>'
+    })
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello vue!',
+            seen: true,
+            todos: [{
+                text: 'js'
+            }, {
+                text: 'vue'
+            }, {
+                text: 'css3'
+            }],
+            items: [{
+                text: 'java'
+            }, {
+                text: 'php'
+            }, {
+                text: 'python'
+            }]
+        },
+        methods: {
+            reverse() {
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app1">
+        <my-component1></my-component1>
+    </div>
+    <br>
+    <div id="app2">
+        <my-component1></my-component1>
+        <my-component2></my-component2>
+        <my-component3></my-component3>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+// 全局注册
+Vue.component('my-component1', {
+    template: '<div>This is my component!</div>'
+})
+var vm1 = new Vue({
+    el: '#app1'
+})
+var vm2 = new Vue({
+    el: '#app2',
+    components: {
+        // 局部注册
+        'my-component2': {
+            template: '<div>This is the second component!</div>'
+        },
+        'my-component3': {
+            template: '<div>This is the third component!</div>'
+        }
+    }
+})
+</script>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="./lib/vue.js"></script>
+  <script src="./lib/vue-resource.js"></script>
+</head>
+<body>
+  <div id="box">
+    <button @click="get()">按钮</button>
+  </div>
+  <script>
+    new Vue({
+      el: '#box',
+      data: {
+        
+      },
+      methods: {
+        get() {
+          this.$http.get('get.js', {
+            params: {
+              a: 1,
+              b: 3
+            }
+          }).then(function(res) {
+            console.log(res)
+          }, function(res) {
+            console.log(res)
+          }).catch(function(res) {
+            console.log(res)
+          })
+        }
+      }
+    })
+  </script>
+</body>
+</html>

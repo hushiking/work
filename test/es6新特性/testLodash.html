@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试lodash</title>
+  <script src="js/lodash.js"></script>
+</head>
+<body>
+  <script>
+    for (var i = 0; i < 5; i++) {
+      console.log(i)
+    }
+
+    // Array相当于构造函数
+    Array.apply(null, Array(3)).forEach(function() {
+      console.log('循环n次')
+    })
+
+    var a = Array('a', 3, 5)
+    console.log(a)
+
+    _.times(5, function() {
+      console.log('hello')
+    })
+
+    var users = [
+      { 'user': 'barney',  'age': 36 },
+      { 'user': 'fred',    'age': 40 },
+      { 'user': 'pebbles', 'age': 18 }
+    ]
+    var x = _(users)
+    var y = x.map(function(user) {
+      return user.user
+    }).join(',')
+    console.log(y)
+    var names = _(users)
+      .map(function(user){
+        return user.user;
+      })
+      .join(" , ")
+      .value()
+    console.log(names)
+  </script>
+</body>
+</html>

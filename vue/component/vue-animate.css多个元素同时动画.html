@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-animate.css多个元素同时动画</title>
+  <style>
+  p {
+    width: 200px;
+    height: 200px;
+    background: #666;
+    margin: 20px auto;
+  }
+  </style>
+  <link rel="stylesheet" href="node_modules/animate.css/animate.css">
+  <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="all">
+    <button @click="toggle">切换</button>
+    <transition-group enter-active-class="zoomInLeft" leave-active-class="zoomOutRight">
+      <p v-if="show" class="animated" :key="1">理想</p>
+      <p v-if="show" class="animated" :key="2">理想</p>
+    </transition-group>
+  </div>
+  <script>
+  new Vue({
+    el: '#all',
+    data: {
+      show: true
+    },
+    methods: {
+      toggle() {
+        this.show = !this.show
+      }
+    }
+  })
+  </script>
+</body>
+
+</html>

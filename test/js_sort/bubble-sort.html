@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>冒泡排序JS实现</title>
+</head>
+
+<body>
+  <script>
+  function bubbleSort(arr) {
+    console.time('原始冒泡排序耗时')
+    var len = arr.length
+    for (var i = 0; i < len; i++) {
+      for (var j = 0; j < len - 1 - i; j++) {
+        if (arr[j] > arr[j + 1]) {
+          var temp = arr[j + 1]
+          arr[j + 1] = arr[j]
+          arr[j] = temp
+        }
+      }
+    }
+    console.timeEnd('原始冒泡排序耗时')
+    return arr
+  }
+  var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48]
+  console.log(bubbleSort(arr))
+
+  function bubbleSort1(arr) {
+    console.time('1.原始冒泡排序耗时')
+    var len = arr.length
+    for (var i = 0; i < len; i++) {
+      var flag = false
+      for (var j = 0; j < len - 1 - i; j++) {
+        if (arr[j] > arr[j + 1]) {
+          flag = true
+          var temp = arr[j + 1]
+          arr[j + 1] = arr[j]
+          arr[j] = temp
+        }
+      }
+      if (!flag) {
+        console.timeEnd('1.原始冒泡排序耗时')
+        return arr
+      }
+    }
+    console.timeEnd('1.原始冒泡排序耗时')
+    return arr
+  }
+  var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48]
+  console.log(bubbleSort1(arr))
+
+  function bubbleSort2(arr) {
+    console.time('2.改进后冒泡排序耗时')
+    var i = arr.length - 1
+    while (i > 0) {
+      var pos = 0 // 每趟开始时，无记录交换
+      for (var j = 0; j < i; j++) {
+        if (arr[j] > arr[j + 1]) {
+          pos = j // 记录交换的位置
+          var temp = arr[j]
+          arr[j] = arr[j + 1]
+          arr[j + 1] = temp
+        }
+      }
+      i = pos // 为下一趟排序做准备
+    }
+    console.timeEnd('2.改进后冒泡排序耗时')
+    return arr
+  }
+  var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48]
+  console.log(bubbleSort2(arr))
+
+  function bubbleSort3(arr) {
+    console.time('3.改进后冒泡排序耗时')
+    var low = 0,
+      high = arr.length - 1,
+      temp, j
+    while (low < high) {
+      for (j = low; j < high; j++) {
+        if (arr[j] > arr[j + 1]) {
+          temp = arr[j]
+          arr[j] = arr[j + 1]
+          arr[j + 1] = temp
+        }
+      }
+      high--
+      for (j = high; j > low; j--) {
+        if (arr[j] < arr[j - 1]) {
+          temp = arr[j]
+          arr[j] = arr[j - 1]
+          arr[j - 1] = temp
+        }
+      }
+      low++
+    }
+    console.timeEnd('3.改进后冒泡排序耗时')
+    return arr
+  }
+  var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48]
+  console.log(bubbleSort3(arr))
+
+  function bubbleSort4(arr) {
+    console.time('4.改进后冒泡排序耗时')
+    var low = 0,
+      high = arr.length - 1,
+      temp, j
+    while (low < high) {
+      for (j = low; j < high; ++j) {
+        if (arr[j] > arr[j + 1]) {
+          temp = arr[j]
+          arr[j] = arr[j + 1]
+          arr[j + 1] = temp
+        }
+      }
+      --high
+      for (j = high; j > low; --j) {
+        if (arr[j] < arr[j - 1]) {
+          temp = arr[j]
+          arr[j] = arr[j - 1]
+          arr[j - 1] = temp
+        }
+      }
+      ++low
+    }
+    console.timeEnd('4.改进后冒泡排序耗时')
+    return arr
+  }
+  var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48]
+  console.log(bubbleSort4(arr))
+  </script>
+</body>
+
+</html>

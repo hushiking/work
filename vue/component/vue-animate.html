@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue动画</title>
+  <style>
+  .box {
+    width: 200px;
+    height: 200px;
+    background: red;
+  }
+  
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all 2s
+  }
+  
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0;
+    width:  300px;
+    height: 300px;
+    background: yellow;
+  }
+  </style>
+  <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="all">
+    <button @click="toggle">切换</button>
+    <transition name="fade" 
+      @before-enter="beforEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+
+      @before-leave="beforLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
+    >
+      <div class="box" v-if="show">理想</div>
+    </transition>
+  </div>
+  <script>
+  new Vue({
+    el: '#all',
+    data: {
+      show: true
+    },
+    methods: {
+      toggle() {
+        this.show = !this.show
+      },
+      beforEnter(el) {
+        console.log('动画enter之前')
+        console.log(el)
+      },
+      enter(el) {
+        console.log('动画enter过程中')
+      },
+      afterEnter(el) {
+        console.log('动画enter之后')
+        el.style.background = 'blue'
+      },
+      beforLeave(el) {
+        console.log('动画leave之前')
+        console.log(el)
+      },
+      leave(el) {
+        console.log('动画leave过程中')
+      },
+      afterLeave(el) {
+        console.log('动画leave之后')
+        el.style.background = 'red'
+      }
+    }
+  })
+  </script>
+</body>
+
+</html>

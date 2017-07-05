@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>BFC规则检测（自适应两列布局）</title>
+  <style>
+  body {
+    width: 300px; /* 只能作为父元素属性继承给子元素 */
+    background: #0094ff;
+    /* position: relative; */
+  }
+  
+  .aside {
+    width: 100px;
+    height: 150px;
+    float: left;
+    background: #f66;
+  }
+  
+  .main {
+    /* 此时元素的width: auto;会根据父元素宽度变化而变化 */
+    height: 200px;
+    background: #fcc;
+    /* overflow: hidden; */
+  }
+  </style>
+</head>
+
+<body>
+  <div class="aside"></div>
+  <div class="main"></div>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>递归调用</title>
+</head>
+
+<body>
+  <script>
+  var list = [0, 1]
+  var nextListItem = function() {
+    var item = list.pop()
+    if (item) {
+      nextListItem()
+    }
+    console.log(item)
+  }
+  nextListItem()
+  </script>
+  <script>
+  console.log('==========')
+  /*var list = [0, 1]
+  var nextListItem = function() {
+    var item = list.pop()
+    if (item) {
+      setTimeout(nextListItem, 0)
+    }
+    console.log(item)
+  }
+  nextListItem()*/
+  </script>
+  <script>
+  console.log('==========')
+  /*for (var i = 0; i < 5; i++) {
+    setTimeout(function() { // 异步开启了五次函数
+      console.log(i)
+    }, i * 1000)
+  }*/
+  </script>
+  <script>
+  console.log('==========')
+  /*for (var i = 0; i < 5; i++) {
+    !function(i) {
+      setTimeout(function() { // 异步开启了五次函数
+        console.log(i)
+      }, i * 1000)    
+    }(i)
+  }*/
+  </script>
+  <script>
+  for (var i = 0; i < 5; i++) {
+    setTimeout(console.log.bind(console, i), i * 1000)
+  }
+  </script>
+  <script>
+  console.log('0||1='+(0||1))
+  console.log('1||2='+(1||2))
+  console.log('0 & 1 ='+(0 && 1))
+  console.log('1 & 2 ='+(1 && 2))
+  </script>
+  <script>
+  var a = {},
+    b = {key: 'b'},
+    c = {key: 'c'}
+
+  a[b] = 123
+  a[c] = 456
+  console.log(a[b])
+  </script>
+  <script>
+  var ans = (function f(n) {
+    console.log(arguments)
+    return n > 1 ? n * f(n - 1) : n
+  })(10)
+  console.log(ans)
+  </script>
+  <script>
+  (function(x) {
+    return (function(y) {
+      console.log(x)
+    })(2)
+  })(1);
+
+  (function(y) {
+    return (function(y) {
+      console.log(y)
+    })(2)
+  })(1)
+  </script>
+</body>
+
+</html>

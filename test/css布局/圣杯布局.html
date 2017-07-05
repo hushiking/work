@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>圣杯布局</title>
+  <style>
+    .wrap {
+      background: #D66464;
+    }
+    .clearfix::after {
+      content: "";
+      clear: both;
+      /* height: 0; */
+      display: block;
+      /* visibility: hidden; */
+    }
+    .left {
+      float: left;
+      width: 100px;
+      background: #00f;
+      height: 180px;
+    }
+    .right {
+      float: right;
+      width: 150px;
+      background: #0f0;
+      height: 200px;
+    }
+    .center {
+      background: #fff;
+      margin-left: 110px;
+      margin-right: 160px;
+      height: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap clearfix">
+    <div class="left">left，宽度固定，高度可固定也可以由内容撑开</div>
+    <div class="right">right，宽度固定，高度可固定也可以由内容撑开</div>
+    <div class="center">center，可以自适应浏览器宽度，高度可固定也可以由内容撑开</div>
+  </div>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, numquam, voluptate? Assumenda possimus cupiditate ut, itaque at, exercitationem nobis blanditiis, ad nisi ea labore! Sint sed amet ullam id, vel.
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试Generator函数和yield*的用法</title>
+</head>
+<body>
+  <script>
+    function *foo() {
+      yield 2;
+      yield 3;
+      return "foo";
+    }
+
+    function *bar() {
+      yield 1;
+      var v = yield *foo();
+      console.log( "v: " + v );
+      yield 4;
+    }
+
+    var it = bar();
+
+    var a = it.next()
+    // {value: 1, done: false}
+    var b = it.next()
+    // {value: 2, done: false}
+    var c = it.next()
+    // {value: 3, done: false}
+    var d = it.next();
+    // "v: foo"
+    // {value: 4, done: false}
+    var e = it.next()
+    // {value: undefined, done: true}
+  </script>
+</body>
+</html>

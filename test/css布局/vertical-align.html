@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vertical-align负值与margin-bottom负值的差异</title>
+  <style>
+    .test_box {
+        width: 45%;
+        float: left;
+        margin-right: 1%;
+        background-color: #f0f3f9;
+        line-height: 5;
+    }
+    .mb-200 {
+        margin-bottom: -200px;
+        margin-right: 50px;
+    }
+    .va-200 {
+        /* line-height不同，top与text-top的效果不一样 */
+        vertical-align: text-top; 
+    }
+    .dib-baseline {
+      display: inline-block; 
+      width: 150px; 
+      height: 150px;
+      border: 1px solid #cad5eb; 
+      background-color: #f0f3f9;
+      line-height: 5;
+    }
+    .next {
+      display: inline-block;
+      margin: 200px 0 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="test_box">
+      <img src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg" class="mb-200" />张含韵
+  </div>
+  <div class="test_box">
+      <img src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg" class="va-200" />张含韵
+  </div>
+  <div class="next">
+    x-baseline
+    <span class="dib-baseline"></span>
+    <span class="dib-baseline">x-baseline</span>
+  </div>
+</body>
+</html>

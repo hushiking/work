@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box" :type="loginType">
+        <my-template></my-template>
+        <template id="myTemplate">
+            <div v-if="loginType">
+                <label>Username</label>
+                <input placeholder="Enter your username" key="username-input">
+            </div>
+            <div v-else>
+                <label>Email</label>
+                <input placeholder="Enter your email address" key="email-input">
+            </div>
+        </template>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+    // 1.创建一个组件构造器
+    var myComponent = Vue.extend({
+
+    })
+    var vm = new Vue({
+        el: '#box',
+        data: {
+            loginType: true
+        },
+        components: {
+            // 2.将myComponent组件注册到Vue实例下
+            'my-template': {
+                template: '#myTemplate'
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

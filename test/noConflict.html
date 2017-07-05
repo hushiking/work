@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+  (function(window) {
+    var otherName = window.$;
+    var $ = function() {};
+    $.myMethod = function() {
+      alert("模拟自定义方法实现")
+    }
+    $.noConflict = function() {
+        window.$ = otherName;
+        return this;
+      }
+      //...
+    window.$ = $;
+
+  })(window);
+  </script>
+  <script>
+  var myPluginNewName = $.noConflict();
+  myPluginNewName.myMethod();
+  //jquery
+  $(function() {
+    alert(111);
+  });
+  </script>
+</body>
+
+</html>

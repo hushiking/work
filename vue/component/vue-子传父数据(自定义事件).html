@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue-父子组件</title>
+  <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+  <template id="aaa">
+    <div>
+      <span>我是父级</span><strong></strong>
+      <h3 @click="change">{{msg}}</h3>
+      <bbb @msg="receive"></bbb>
+    </div>
+  </template>
+  <template id="bbb">
+    <div>
+      <span>我是子级</span><button @click="send">发送</button>
+      <h3 @click="change">{{msg}}</h3>
+    </div>
+  </template>
+  <div id="box">
+    <aaa></aaa>
+  </div>
+  <script>
+    new Vue({
+      el: '#box',
+      data: {
+        a: 'aaa'
+      },
+      components: {
+        'aaa': {
+          template: '#aaa',
+          data() {
+            return {
+              msg: '父组件aaa'
+            }
+          },
+          methods: {
+            change() {
+              this.msg = "改变了父组件aaa"
+            },
+            receive(msg) {
+              this.msg = msg
+            }
+          },
+          components: {
+            'bbb': {
+              template: '#bbb',
+              data() {
+                return {
+                  msg: '父组件bbb'
+                }
+              },
+              methods: {
+                change() {
+                  this.msg = "改变了父组件bbb"
+                },
+                send() {
+                  this.$emit('msg', this.msg)
+                }
+              }
+            }
+          }
+        },
+      }
+    })
+  </script>
+</body>
+</html>

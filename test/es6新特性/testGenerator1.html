@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>协程的Generator函数实现</title>
+</head>
+<body>
+  <script>
+    function* gen(x) {
+      var y = 2 + (yield x + 2);
+      return y;
+    }
+
+    var g = gen(1);
+    var a = g.next() // { value: 3, done: false }
+    var b = g.next() // { value: undefined, done: true } yield表达式的返回值默认为undefined
+  </script>
+</body>
+</html>

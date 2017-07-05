@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .red {
+      color: red;
+    }
+    .cyan {
+      background-color: cyan;
+    }
+  </style>
+  <script src="lib/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <strong :style="[c,d]" :class="[red,b]">一段文字......</strong>
+  </div>
+  <script>
+    new Vue({
+      el: '#box',
+      data: {
+        red: 'red',
+        c: {color: 'orange'},
+        b: {cyan: true},
+        d: {backgroundColor: 'pink'}
+      }
+    })
+  </script>
+</body>
+</html>
