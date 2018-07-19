@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>阻止事件冒泡</title>
   <script src="lib/vue.js"></script>
 </head>
 <body>
   <div id="box">
     <div @click="show2()">
-      <button v-on:click.stop="show()">按钮</button>
+      <button v-on:click.stop="show($event)">按钮</button>
     </div>
   </div>
   <script>
@@ -18,8 +18,12 @@
 
       },
       methods: {
-        show() {
+        show(ev) {
+          console.log(ev)
           alert(1)
+          // 原生阻止冒泡
+          // ev.cancelBubble = true
+          // ev.stopPropagation()
         },
         show2() {
           alert(2)

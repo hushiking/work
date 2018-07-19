@@ -7,4 +7,5 @@ http.createServer(function(req, res) {
   var b = queryString.b
   var sum = a + b
   res.end(sum)
+  console.log(a, '===', b)
 }).listen(8888)

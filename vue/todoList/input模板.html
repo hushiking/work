@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>双向绑定</title>
   <script src="lib/vue.js"></script>
 </head>
 <body>
@@ -11,15 +11,27 @@
     <br>
     {{msg}}
     <br>
+    <!-- 支持html代码编译<h2>aa</h2> -->
     <span v-html="msg"></span>
     <br>
+    <!-- 只渲染一次 -->
     <span v-once>{{msg}}</span>
+    <br>
+    {{msg2}}
+    <hr>
+    <ul>
+      <li v-for="(item, key, index) in json">
+        {{index}} {{key}} {{item}}
+      </li>
+    </ul>
   </div>
   <script>
     new Vue({
       el: '#box',
       data: {
-        msg: 'abc'
+        msg: 'abc',
+        msg2: false,
+        json: {a: 'hello', b: 'hi', c: 'hei'}
       }
     })
   </script>

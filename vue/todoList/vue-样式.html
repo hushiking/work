@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>vue绑定样式</title>
   <style>
     .red {
       color: red;
@@ -10,12 +10,19 @@
     .cyan {
       background-color: cyan;
     }
+    .size {
+      font-size: 20px;
+    }
+    .color {
+      color: #ccc;
+    }
   </style>
   <script src="lib/vue.js"></script>
 </head>
 <body>
   <div id="box">
     <strong :style="[c,d]" :class="[red,b]">一段文字......</strong>
+    <p :class="e">段落。。。</p>
   </div>
   <script>
     new Vue({
@@ -24,7 +31,8 @@
         red: 'red',
         c: {color: 'orange'},
         b: {cyan: true},
-        d: {backgroundColor: 'pink'}
+        d: {backgroundColor: 'pink'},
+        e: {size: true, color: true}
       }
     })
   </script>
