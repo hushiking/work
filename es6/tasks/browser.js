@@ -7,6 +7,6 @@ gulp.task('browser', (cb) => {
   if(!args.watch) return cb()
 
   gulp.watch('app/**/*.js', ['scripts'])
-  gulp.watch('app/**/*.ejs', ['pages'])
+  gulp.watch('app/**/*.ejs', ['rev'])
   gulp.watch('app/**/*.css', ['css'])
 })

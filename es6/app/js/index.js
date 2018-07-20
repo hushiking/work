@@ -5,4 +5,4 @@ class Test {
 }
 
 let test = new Test()
-document.body.innerHTML = test.a
+document.getElementsByTagName('h2')[0].innerHTML = `<a href='http://www.baidu.com'>${test.a}</a>`
