@@ -11,8 +11,11 @@ gulp.task('css', () => {
   return gulp.src('app/css/**/*.css')
     // .pipe(concat('index.min.css'))
     .pipe(cleanCss())
+    // 为css生成md5名称
     .pipe(rev())
     .pipe(gulp.dest('server/public/css'))
+    // 记录文件名对应md5名
     .pipe(rev.manifest())
+    // 记录文件xx.json存放位置
     .pipe(gulp.dest('server/public/rev/css'))
 })

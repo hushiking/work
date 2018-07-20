@@ -18,7 +18,7 @@ gulp.task('scripts', () => {
                 
             }
         }))
-        // 给流文件任意的chunk name
+        // 给流文件任意的chunk name（可以防止webpack合并js文件）
         .pipe(named())
         // gulpWebpack第二个参数可以传'webpack'，表示使用自定义版本的webpack；传null默认使用webpack1.15.0版本，注意配合babel-loader版本
         .pipe(gulpWebpack({
@@ -34,9 +34,12 @@ gulp.task('scripts', () => {
             }))
         }))
         .pipe(uglify({ compress: { properties: false }, output: { 'quote_keys': true } }))
+        // 为js生成md5文件名
         .pipe(rev())
         .pipe(gulp.dest('server/public/js'))
+        // 记录js文件名对应md5名
         .pipe(rev.manifest())
+        // 记录文件xx.json存放位置
         .pipe(gulp.dest('server/public/rev/js'))
         // webpack会将js合并为一个xxxxx.js文件
         // .pipe(rename({

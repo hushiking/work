@@ -8,6 +8,7 @@ gulp.task('rev', () => {
     gulp.src(['server/public/**/*.json', 'app/**/*.ejs'])
         .pipe(revCollector({
             replaceRevd: true,
+            // 替换原有ejs文件中的路径
             dirReplacements: {
                 // 'js': 'public/js',
                 '../js/class': '/js',
