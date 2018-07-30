@@ -20,6 +20,9 @@
         },
         computed: {
             reversedMessage() {
+                // 可以写一些业务逻辑代码，b的属性值取决于return的值
+                // 默认调用get() { return 111 }
+                // 其内部还有set(val) { this.message = 'hi' }
                 return this.message.split('').reverse().join('')
             }
         }

@@ -17,11 +17,22 @@
       data: {
         a: {num: 1},
         b: ''
+      },
+      filters: {
+        json: function(val) {
+          if (!val) return ''
+          console.log(val)
+          return JSON.stringify(val) 
+        }
       }
     })
+    // 如果a是对象，则需要使用参数deep: true监听对象a的变化
     vm.$watch('a', function() {
       this.b = this.a
-    })
+    }, {deep: true})
+    document.onclick = function() {
+      vm.a.num = 10
+    }
   </script>
 </body>
 </html>

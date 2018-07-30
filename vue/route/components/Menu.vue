@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="(value, index) in fruits">{{index+1}}.{{value}}</li>
+    <li v-for="(value, index) in fruits" :key="index">{{index+1}}.{{value}}</li>
   </ul>
 </template>
 <script>

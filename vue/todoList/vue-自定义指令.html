@@ -21,7 +21,7 @@
   <script>
     Vue.directive('red', function(el, binding, vnode) {
       el.style.color = binding.value
-      console.log(binding)
+      console.log(this.el, binding, vnode)
     })
     // vue2已经移除
     /*Vue.elementDirective('my-red', {

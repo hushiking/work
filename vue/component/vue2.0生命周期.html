@@ -36,6 +36,7 @@
       // 给实例绑定了属性和方法,但是DOM树还未构建
       console.log('实例已经创建完成')
     },
+    // vue2.0删除了beforeCompile、compile与ready生命周期方法
     beforeMount() {
       console.log('模板编译之前,还未挂载')
     },

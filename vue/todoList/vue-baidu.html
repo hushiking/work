@@ -17,6 +17,7 @@
     <ul>
       <li v-for="(item, index) in items" :class="{gray: index == now}">{{item}}</li>
     </ul>
+    <p v-show="items.length === 0">暂无数据...</p>
   </div>
   <script>
     new Vue({

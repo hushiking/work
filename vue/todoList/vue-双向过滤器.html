@@ -11,7 +11,8 @@
     {{value | currency}}
   </div>
   <script>
-    /*Vue.filter('currency', {
+    // vue2不能执行
+    /* Vue.filter('currency', {
       read: function(val) {
         return '$'+val.toFixed(2)
       },
@@ -19,7 +20,7 @@
         var number = +val.replace(/[^\d.]/g, '')
         return isNaN(number) ? 0 : parseFloat(number.toFixed(2))
       }
-    })*/
+    }) */
     Vue.filter('currency', function(val) {
       if (!val) return ''
       return isNaN(val) ? 0 : parseFloat(val).toFixed(2)

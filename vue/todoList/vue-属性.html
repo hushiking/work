@@ -12,18 +12,27 @@
     <button @dblclick="toggle()">点击</button>
   </div>
   <script>
-    new Vue({
+    var vm = new Vue({
       el: '#box',
       data: {
         url: 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png',
         show: true
       },
+      aa: 25,
       methods: {
         toggle: function() {
           this.show = !this.show
         }
       }
     })
+
+    console.log('vm.$el => 就是元素', vm.$el)
+    console.log('vm.$data => 就是data', vm.$data)
+    console.log('vm.$mount => 手动挂载vue程序', vm.$mount)
+    console.log('vm.$options => 自定义属性', vm.$options)
+    console.log('vm.$destroy => 销毁对象', vm.$destroy)
+    // vue2.0废止
+    // console.log('vm.$log => 查看现在数据的状态', vm.$log)
   </script>
 </body>
 </html>
